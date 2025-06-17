@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title> Thalisson Rodrigues - Thalisson</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f3f4f6;
+      color: #333;
+    }
+
+    header {
+      background-color: #ff0000;
+      padding: 20px;
+      text-align: center;
+      color: white;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      color: #fff;
+    }
+
+    header p {
+      font-size: 1.2em;
+      margin-top: 5px;
+      color: #e0e7ff;
+    }
+
+    nav {
+      background-color: #1f2937;
+      padding: 10px 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #f9fafb;
+      font-weight: bold;
+      padding: 10px 15px;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+
+    nav ul li a:hover {
+      background-color: #374151;
+    }
+
+    .conteudo {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .card {
+      background: white;
+      margin: auto;
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 600px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .card h2 {
+      color: #ff0000;
+      margin-bottom: 15px;
+    }
+
+    .section {
+      margin-top: 50px;
+      padding: 20px;
+    }
+
+    .grid {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .item {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 200px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .item:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      margin-top: 175px;
+      text-align: center;
+      padding: 15px;
+      background: #e5e7eb;
+      color: #555;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding-top: 100px;
+    }
+
+    .modal-content {
+      background: white;
+      margin: auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 50%;
+      text-align: left;
+    }
+
+    .close {
+      float: right;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Thalisson Rodrigues</h1>
+    <p>Thalisson • Programador de Desenvolvimento de Sistemas</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#">Início</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#contato">Contato</a></li>
+      <li><a href="#">Sair</a></li>
+    </ul>
+  </nav>
+
+  <div class="conteudo">
+    <div class="card">
+      <h2>Bem-vindo ao meu portfólio!</h2>
+      <p>Explore meus projetos, veja minhas habilidades e entre em contato!</p>
+    </div>
+
+    <div class="section">
+      <li><a href="#sobre">Sobre</a></li>
+
+     
+    <div class="section">
+      <h2>Habilidades</h2>
+      <div class="grid">
+        <div class="item" onclick="abrirModal('Java', 'Java é uma linguagem de programação poderosa. Eu já criei aplicações desktop com ela.')">Java</div>
+        <div class="item" onclick="abrirModal('CSS', 'CSS é usado para estilizar páginas web. Já desenvolvi diversos layouts responsivos.')">CSS</div>
+        <div class="item" onclick="abrirModal('JavaScript', 'JavaScript permite páginas interativas. Já fiz sliders, modais e sistemas dinâmicos.')">JavaScript</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Projetos</h2>
+      <div class="grid">
+        <div class="item" onclick="abrirModal('Projeto 1', 'Esse projeto foi um site institucional para uma empresa local.')">Projeto 1</div>
+        <div class="item" onclick="abrirModal('Projeto 2', 'Desenvolvi uma calculadora usando JavaScript puro.')">Projeto 2</div>
+        <div class="item" onclick="abrirModal('Projeto 3', 'Blog com CMS simples feito em PHP.')">Projeto 3</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="fecharModal()">&times;</span>
+      <h3 id="modalTitulo"></h3>
+      <p id="modalTexto"></p>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 Thalisson. Todos os direitos reservados.
+  </footer>
+
+  <script>
+    function abrirModal(titulo, texto) {
+      document.getElementById('modalTitulo').innerText = titulo;
+      document.getElementById('modalTexto').innerText = texto;
+      document.getElementById('modal').style.display = 'block';
+    }
+
+    function fecharModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById('modal');
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>
